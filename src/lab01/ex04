@@ -1,0 +1,44 @@
+using System;
+using System.CodeDom;
+using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
+
+namespace Labs
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Цена на продукт");
+            int price = int.Parse(Console.ReadLine());
+            if (price <= 0)
+            {
+                Console.WriteLine("Слишком низкая цена");
+                return;
+            }
+            Console.WriteLine("Введите желаемую скидку");
+            int discount = int.Parse(Console.ReadLine());
+            if (discount <= 0)
+            {
+                Console.WriteLine("Скидка меньше 0 или равна 0, работашь в убыток");
+                return;
+            }
+
+            else if (discount >= 50)
+            {
+                Console.WriteLine("Ну ты палку то не перегибай");
+                return;
+            };
+            double Vat = 1.2;
+            double Base = price * (1 - (discount / 100.0));
+            double total = Base * Vat;
+            Console.WriteLine("И того к оплате: "+ total+"₽");
+        }
+
+    }
+}
