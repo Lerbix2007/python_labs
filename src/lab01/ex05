@@ -1,0 +1,40 @@
+
+using System;
+using System.CodeDom;
+using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
+
+namespace Labs
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+
+            string name = "Иванов Иван Иванович";
+            Console.WriteLine($"ФИО: {name}");
+            int length = name.Length;
+            Console.WriteLine($"Длина (символов): {length}");
+
+            string result = " ";
+            for (int i = 0; i < name.Length; i++)
+            {
+                
+                if (i == 0 || name[i - 1] == ' ')
+                {
+                    result += name[i];
+                }
+            }
+
+            Console.WriteLine("Краткое ФИО: "+result);
+
+
+
+        }
+    }
+}
