@@ -37,7 +37,7 @@ namespace Labs
             double Vat = 1.2;
             double Base = price * (1 - (discount / 100.0));
             double total = Base * Vat;
-            Console.WriteLine("И того к оплате: "+ total+"₽");
+            Console.WriteLine("И того к оплате: "+ total+"$");
         }
 
     }
