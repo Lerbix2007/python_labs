@@ -163,6 +163,7 @@ namespace Labs
 
 using System;
 namespace Labs
+  {
     internal class Program
 
     {
@@ -196,6 +197,7 @@ namespace Labs
         }
 
     }
+  }
 
 ```
 ![alt text](images/lab02/ex1.png)
