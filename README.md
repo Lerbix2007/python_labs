@@ -1,15 +1,6 @@
 Задание 1
 ```c#
 using System;
-using System.CodeDom;
-using System.Collections.Generic;
-using System.Diagnostics.Eventing.Reader;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
-
 namespace Labs;
 {
 internal class Program
@@ -45,15 +36,6 @@ internal class Program
 Задание 2
 ```c#
 using System;
-using System.CodeDom;
-using System.Collections.Generic;
-using System.Diagnostics.Eventing.Reader;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
-
 namespace Labs
 {
     internal class Program
@@ -79,15 +61,6 @@ namespace Labs
 Задание 3
 ```c#
 using System;
-using System.CodeDom;
-using System.Collections.Generic;
-using System.Diagnostics.Eventing.Reader;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
-
 namespace Labs
 {
     internal class Program
@@ -109,15 +82,6 @@ namespace Labs
 Задание 4
 ```c#
 using System;
-using System.CodeDom;
-using System.Collections.Generic;
-using System.Diagnostics.Eventing.Reader;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
-
 namespace Labs
 {
     internal class Program
@@ -161,15 +125,6 @@ namespace Labs
 ```c#
 
 using System;
-using System.CodeDom;
-using System.Collections.Generic;
-using System.Diagnostics.Eventing.Reader;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
-
 namespace Labs
 {
     internal class Program
