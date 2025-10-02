@@ -2,7 +2,7 @@
 ```c#
 using System;
 namespace Labs;
-{
+
 internal class Program
 {
     static void Main(string[] args)
@@ -27,7 +27,7 @@ internal class Program
 
     }
 }
-}
+
 
 
 ```
@@ -164,6 +164,7 @@ namespace Labs
 using System;
 namespace Labs
     internal class Program
+
     {
         static int[] CombineArrays(params int[][] arrays)
         {
@@ -194,10 +195,7 @@ namespace Labs
             
         }
 
-
-
-
     }
-}
 
 ```
+![alt text](images/lab02/ex1.png)

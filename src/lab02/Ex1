@@ -1,0 +1,42 @@
+
+using System;
+namespace Учимся_програмиррованию_1__Console_
+{
+    internal class Program
+    {
+        static int[] CombineArrays(params int[][] arrays)
+        {
+            List<int> result = new List<int>();
+            foreach (int[] ArrayNew in arrays)
+            {
+                result.AddRange(ArrayNew);
+            }
+            return result.ToArray();
+        }
+        static void Main(string[] args)
+        {
+            //1
+            int[] array1 = {2,5,16,12};
+            Console.WriteLine($"изначальный массив 1: {string.Join(",", array1)} ");
+            Console.WriteLine($" мин: {array1.Min()}, макс: {array1.Max()}");
+            //2
+            int[] array2 = {30,18,1,0};
+            Console.WriteLine($"изначальный массив 2: {string.Join(",", array2)} ");
+            int[] sorted = new int[array2.Length];
+            Array.Copy(array2, sorted, array2.Length);
+            Array.Sort(sorted);
+            Console.WriteLine($"отсортированный по возр. массив: [{string.Join(", ", sorted)}]");
+            //3
+            int[] nullarray = { };
+            int[] combined = CombineArrays(array1, nullarray, sorted);
+            Console.WriteLine($"Общий массив: [{string.Join(", ", combined)}]");
+            
+        }
+
+
+
+
+    }
+}
+
+
