@@ -1,0 +1,43 @@
+def format_record(rec):
+    fio, group, gpa = rec
+    
+    # Очистка ФИО
+    fio_parts = fio.strip().split()
+    fio_parts = [part.capitalize() for part in fio_parts]
+    
+    # Форматируем фамилию и инициалы
+    surname = fio_parts[0]
+    initials = []
+    for i in range(1, len(fio_parts)):
+        if fio_parts[i]:
+            initials.append(fio_parts[i][0].upper() + ".")
+    
+    if initials:
+        formatted_fio = f"{surname} {''.join(initials)}"
+    else:
+        formatted_fio = surname
+    
+    # Форматируем строку
+    formatted_str = f"{formatted_fio}, гр. {group}, GPA {gpa:.2f}"
+    
+    return formatted_str
+
+
+def main():
+    print("ФОРМАТИРОВАНИЕ ЗАПИСЕЙ СТУДЕНТОВ")
+    
+    test_cases = [
+        ("Росинский Леонид Андреевич", "BIVT-25", 4.6),
+        ("Петров Пётр", "IKBO-12", 5.0),
+        ("  сидорова  анна   сергеевна ", "ABB-01", 3.999),
+        ("Смирнов Алексей", "БИВТ-22", 4.5),
+    ]
+    
+    for rec in test_cases:
+        result = format_record(rec)
+        print(f"Вход: {rec}")
+        print(f"Результат: {result}\n")
+
+
+if __name__ == "__main__":
+    main()
