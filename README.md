@@ -291,7 +291,7 @@ def test_functions():
     print(f"  {tokens2} → {top2}")
 def demo_text_analysis():
     """Демонстрационный текст для анализа во 2 задании"""
-    demo_text = "Python - популярный язык программирования. Создан в конце 1980х годов голландским программистом Гвидо ван Россумом."
+    demo_text = "Привет Мир!!! Привет!.."
 
 if __name__ == "__main__":
     test_functions()
@@ -303,15 +303,11 @@ import sys
 from scr.lib.text import normalize, tokenize, count_freq, top_n 
 
 def main():
-    # Мы читаем ВЕСЬ текст из stdin до EOF.
-    text = sys.stdin.read()
-    
-    # Если текст пустой, выходим
-    if not text.strip():
-        print("Текст не введен")
-        return
-    
-    # Обрабатываем текст через функции из lab03/ex01.py
+    demo_text = "Привет Мир!!! Привет!.."
+    print("-" * 30)
+    print("\nПример анализа этого текста:")
+    print("-" * 30)
+    # Обрабатываем текст через функции 
     normalized_text = normalize(demo_text)
     tokens = tokenize(normalized_text)
     frequencies = count_freq(tokens)
