@@ -206,6 +206,7 @@ if __name__ == "__main__":
 ![alt text](images/lab02/ex03.png)
 
 #Лаба 3
+Задание 1
 ```python
 import re
 
@@ -295,5 +296,36 @@ def demo_text_analysis():
 if __name__ == "__main__":
     test_functions()
 ```
-Задание 1
 ![alt text](images/lab03/ex01.png)
+Задание 2
+```python
+import sys
+from scr.lib.text import normalize, tokenize, count_freq, top_n 
+
+def main():
+    # Мы читаем ВЕСЬ текст из stdin до EOF.
+    text = sys.stdin.read()
+    
+    # Если текст пустой, выходим
+    if not text.strip():
+        print("Текст не введен")
+        return
+    
+    # Обрабатываем текст через функции из lab03/ex01.py
+    normalized_text = normalize(demo_text)
+    tokens = tokenize(normalized_text)
+    frequencies = count_freq(tokens)
+    top_words = top_n(frequencies, 5)
+    
+    # Выводим результаты
+    print(f"Всего слов: {len(tokens)}")
+    print(f"Уникальных слов: {len(frequencies)}")
+    print("Топ-5:")
+    
+    for word, count in top_words:
+        print(f"{word}:{count}")
+
+if __name__ == "__main__":
+    main()
+```
+![alt text](images/lab03/ex02.png)

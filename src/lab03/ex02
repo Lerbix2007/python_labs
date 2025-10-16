@@ -1,5 +1,5 @@
 import sys
-from lab03.ex01 import normalize, tokenize, count_freq, top_n
+from scr.lib.text import normalize, tokenize, count_freq, top_n 
 
 def main():
     # Мы читаем ВЕСЬ текст из stdin до EOF.
