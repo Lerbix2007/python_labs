@@ -19,7 +19,7 @@ if __name__ == "__main__":
         txt = read_text('src/lab04/Text.test')
         print(f"Прочитано: {txt}")
     except FileNotFoundError:
-        print("Файл text.txt не найден")
+        print("Файл text.test не найден")
     
     write_csv([("word", "count"), ("test", 3)], "table.csv")  
     print("файл csv создан!")

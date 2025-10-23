@@ -4,7 +4,7 @@ from collections import Counter
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 
 try:
-    from scr.lab03.ex01 import normalize, tokenize
+    from srс.lab03.ex01 import normalize, tokenize
 except ImportError as e:
     sys.exit(f"Ошибка импорта: {e}")
 

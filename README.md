@@ -360,6 +360,7 @@ if __name__ == "__main__":
     write_csv([("word", "count"), ("test", 3)], "table.csv")  
     print("файл csv создан!")
 ```
+![alt text](images/lab04/ex01.png)
 
 ### Задание 2
 ```python
@@ -421,3 +422,4 @@ def main():
 if __name__ == "__main__":
     main()
 ```
+![alt text](images/lab04/ex02.png)
