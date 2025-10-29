@@ -4,13 +4,13 @@ from collections import Counter
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 
 try:
-    from srс.lab03.ex01 import normalize, tokenize
+    from src.lab03.ex01 import normalize, tokenize
 except ImportError as e:
     sys.exit(f"Ошибка импорта: {e}")
 
 def main():
     input_file = 'src/lab04/Text.test'
-    output_file = 'src/lab04/Table.csv'
+    output_file = 'src/lab04/Table.json'
 
     try:
         with open(input_file, 'r', encoding='utf-8') as f:
