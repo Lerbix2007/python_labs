@@ -1,17 +1,19 @@
-import json
-import csv
+import csv, json
 from pathlib import Path
 
+def ensure_relative(path: Path) -> None:
+    if path.is_absolute():
+        raise ValueError("Путь должен быть относительным")
 
 def json_to_csv(json_path: str, csv_path: str) -> None:
 
     json_file = Path(json_path)
     csv_file = Path(csv_path)
-    
+    print(f" Ищем файл: {json_path}")
     if not json_file.exists():
         raise FileNotFoundError(f"Файл {json_path} не найден")
     
-    if json_file.suffix.lower() != '.json':
+    if json_file.suffix.lower() != ".json":
         raise ValueError("Неверный тип файла. Ожидается .json")
     
     try:
@@ -63,7 +65,7 @@ def csv_to_json(csv_path: str, json_path: str) -> None:
     
     try:
         with csv_file.open('r', encoding='utf-8') as f:
-            reader = csv.DictReader(f)
+            reader = csv.DictReader(f, delimiter='\t')
             if reader.fieldnames is None:
                 raise ValueError("CSV файл не содержит заголовка")
             
@@ -81,5 +83,5 @@ def csv_to_json(csv_path: str, json_path: str) -> None:
     except Exception as e:
         raise ValueError(f"Ошибка записи JSON: {e}")
 
-json_to_csv("src/data/samples/people.json", "src/data/out/people_from_json.csv")
-csv_to_json("src/data/lab05/samples/people.csv", "src/data/lab05/out/people_from_csv.json")
+json_to_csv(r"C:\Users\Librix\Desktop\labs\python_labs\data\samples\people.json", r"C:\Users\Librix\Desktop\labs\python_labs\data\samples\out\people_from_json.csv")
+csv_to_json(r"C:\Users\Librix\Desktop\labs\python_labs\data\samples\people.csv", r"C:\Users\Librix\Desktop\labs\python_labs\data\samples\out\people_from_csv.json")

@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Arthur",
+    "age": "36",
+    "city": "USA"
+  },
+  {
+    "name": "Leonid",
+    "age": "17",
+    "city": "Moskow"
+  },
+  {
+    "name": "Howard",
+    "age": "39",
+    "city": "Providence"
+  },
+  {
+    "name": "Geralt",
+    "age": "57",
+    "city": "Unknown"
+  }
+]
