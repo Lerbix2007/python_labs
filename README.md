@@ -429,9 +429,6 @@ if __name__ == "__main__":
 import csv, json
 from pathlib import Path
 
-def ensure_relative(path: Path) -> None:
-    if path.is_absolute():
-        raise ValueError("Путь должен быть относительным")
 
 def json_to_csv(json_path: str, csv_path: str) -> None:
 
@@ -640,7 +637,6 @@ def csv_to_xlsx(csv_path: str, xlsx_path: str) -> None:
     wb.save(xlsx_file)
 
 
-# Вызовы функций с АБСОЛЮТНЫМИ путями
 json_to_csv(r"C:\Users\Librix\Desktop\labs\python_labs\data\samples\people.json",
             r"C:\Users\Librix\Desktop\labs\python_labs\data\samples\out\people_from_json.csv")
 csv_to_json(r"C:\Users\Librix\Desktop\labs\python_labs\data\samples\people.csv",

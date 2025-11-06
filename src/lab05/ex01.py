@@ -1,10 +1,6 @@
 import csv, json
 from pathlib import Path
 
-def ensure_relative(path: Path) -> None:
-    if path.is_absolute():
-        raise ValueError("Путь должен быть относительным")
-
 def json_to_csv(json_path: str, csv_path: str) -> None:
 
     json_file = Path(json_path)
