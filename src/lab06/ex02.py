@@ -1,10 +1,22 @@
 import sys, argparse
 from pathlib import Path
+import os
+import contextlib
+import io
 
 from src.lab05.ex01 import json_to_csv, csv_to_json
 from src.lab05.ex02 import csv_to_xlsx
 from src.lab06.ex01 import check_file
 
+def silent_check_file(file_path: str) -> bool:
+    """Проверка файла без вывода на экран"""
+    return os.path.exists(file_path) and os.path.isfile(file_path)
+
+def run_silently(func, *args, **kwargs):
+    """Запускает функцию без вывода на экран"""
+    with contextlib.redirect_stdout(io.StringIO()):
+        with contextlib.redirect_stderr(io.StringIO()):
+            return func(*args, **kwargs)
 
 def main():
     parser = argparse.ArgumentParser(description="Конвертеры данных")
@@ -26,27 +38,27 @@ def main():
 
     try:
         if args.cmd == "json2csv":
-            if not check_file(args.input):
+            if not silent_check_file(args.input):
                 print(f"Ошибка: Файл {args.input} не существует или недоступен")
                 sys.exit(1)
 
-            json_to_csv(args.input, args.output)
+            run_silently(json_to_csv, args.input, args.output)
             print(f"Успешно: JSON -> CSV")
 
         elif args.cmd == "csv2json":
-            if not check_file(args.input):
+            if not silent_check_file(args.input):
                 print(f"Ошибка: Файл {args.input} не существует или недоступен")
                 sys.exit(1)
 
-            csv_to_json(args.input, args.output)
+            run_silently(csv_to_json, args.input, args.output)
             print(f"Успешно: CSV -> JSON")
 
         elif args.cmd == "csv2xlsx":
-            if not check_file(args.input):
+            if not silent_check_file(args.input):
                 print(f"Ошибка: Файл {args.input} не существует или недоступен")
                 sys.exit(1)
 
-            csv_to_xlsx(args.input, args.output)
+            run_silently(csv_to_xlsx, args.input, args.output)
             print(f"Успешно: CSV -> XLSX")
 
         else:
@@ -59,6 +71,8 @@ def main():
         print(f"Ошибка при конвертации: {str(e)}")
         sys.exit(1)
 
+if __name__ == "__main__":
+    main()
 
 
 
