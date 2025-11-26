@@ -648,14 +648,15 @@ csv_to_xlsx(r"C:\Users\Librix\Desktop\labs\python_labs\data\samples\people.csv",
 
 ## Лаба 6
 ### Задание 1
+
 ```python
 import sys, os
 import argparse
 from pathlib import Path
-from src.lib.text_stats import stats_text
+from lib.text_stats import stats_text
 
-from src.lib.text import normalize, tokenize, count_freq, top_n
-from src.lib.io_txt_csv import read_text
+from lib.text_lib import normalize, tokenize, count_freq, top_n
+from lib.io_txt_csv import read_text
 
 
 def check_file(file_path: str) -> bool:

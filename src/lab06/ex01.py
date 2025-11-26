@@ -1,10 +1,8 @@
 import sys, os
 import argparse
-from pathlib import Path
-from src.lib.text_stats import stats_text
+from lib.text_stats import stats_text
 
-from src.lib.text import normalize, tokenize, count_freq, top_n
-from src.lib.io_txt_csv import read_text
+from lib.text_lib import normalize, tokenize, count_freq, top_n
 
 
 def check_file(file_path: str) -> bool:
