@@ -1,6 +1,7 @@
 import re
 from collections import Counter
 
+
 def table(arr: list[tuple[str, int]], isTable: bool = True) -> str:
     if not arr:
         return "(нет данных)"
@@ -15,6 +16,8 @@ def table(arr: list[tuple[str, int]], isTable: bool = True) -> str:
         return s
     else:
         return "\n".join(f"{a[0]}: {a[1]}" for a in arr)
+
+
 def stats_text(text: str, n: int = 5):
     text = text.strip()
     tokens = normalize(text)

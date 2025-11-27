@@ -14,7 +14,7 @@ def json_to_csv(json_path: str, csv_path: str) -> None:
         raise ValueError("Неверный тип файла. Ожидается .json")
 
     try:
-        with json_file.open('r', encoding='utf-8') as f:
+        with json_file.open("r", encoding="utf-8") as f:
             data = json.load(f)
     except json.JSONDecodeError as e:
         raise ValueError(f"Ошибка чтения JSON: {e}")
@@ -40,11 +40,11 @@ def json_to_csv(json_path: str, csv_path: str) -> None:
         fieldnames = sorted(all_keys)
 
     try:
-        with csv_file.open('w', newline='', encoding='utf-8') as f:
+        with csv_file.open("w", newline="", encoding="utf-8") as f:
             writer = csv.DictWriter(f, fieldnames=fieldnames)
             writer.writeheader()
             for row in data:
-                complete_row = {key: row.get(key, '') for key in fieldnames}
+                complete_row = {key: row.get(key, "") for key in fieldnames}
                 writer.writerow(complete_row)
     except Exception as e:
         raise ValueError(f"Ошибка записи CSV: {e}")
@@ -57,12 +57,12 @@ def csv_to_json(csv_path: str, json_path: str) -> None:
     if not csv_file.exists():
         raise FileNotFoundError(f"Файл {csv_path} не найден")
 
-    if csv_file.suffix.lower() != '.csv':
+    if csv_file.suffix.lower() != ".csv":
         raise ValueError("Неверный тип файла. Ожидается .csv")
 
     try:
-        with csv_file.open('r', encoding='utf-8') as f:
-            reader = csv.DictReader(f, delimiter='\t')
+        with csv_file.open("r", encoding="utf-8") as f:
+            reader = csv.DictReader(f, delimiter="\t")
             if reader.fieldnames is None:
                 raise ValueError("CSV файл не содержит заголовка")
 
@@ -75,7 +75,7 @@ def csv_to_json(csv_path: str, json_path: str) -> None:
         raise ValueError("Пустой CSV файл")
 
     try:
-        with json_file.open('w', encoding='utf-8') as f:
+        with json_file.open("w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=2)
     except Exception as e:
         raise ValueError(f"Ошибка записи JSON: {e}")
@@ -96,7 +96,7 @@ def csv_to_xlsx(csv_path: str, xlsx_path: str) -> None:
         raise FileNotFoundError("Файл не найден")
 
     with csv_file.open(encoding="utf-8") as f:
-        reader = list(csv.reader(f, delimiter='\t'))
+        reader = list(csv.reader(f, delimiter="\t"))
         if not reader:
             raise ValueError("Пустой файл")
 
@@ -121,9 +121,15 @@ def csv_to_xlsx(csv_path: str, xlsx_path: str) -> None:
 
 
 # Вызовы функций с АБСОЛЮТНЫМИ путями
-json_to_csv(r"C:\Users\Librix\Desktop\labs\python_labs\data\samples\people.json",
-            r"C:\Users\Librix\Desktop\labs\python_labs\data\samples\out\people_from_json.csv")
-csv_to_json(r"C:\Users\Librix\Desktop\labs\python_labs\data\samples\people.csv",
-            r"C:\Users\Librix\Desktop\labs\python_labs\data\samples\out\people_from_csv.json")
-csv_to_xlsx(r"C:\Users\Librix\Desktop\labs\python_labs\data\samples\people.csv",
-            r"C:\Users\Librix\Desktop\labs\python_labs\data\samples\out\people_from_csv.xlsx")
+json_to_csv(
+    r"C:\Users\Librix\Desktop\labs\python_labs\data\samples\people.json",
+    r"C:\Users\Librix\Desktop\labs\python_labs\data\samples\out\people_from_json.csv",
+)
+csv_to_json(
+    r"C:\Users\Librix\Desktop\labs\python_labs\data\samples\people.csv",
+    r"C:\Users\Librix\Desktop\labs\python_labs\data\samples\out\people_from_csv.json",
+)
+csv_to_xlsx(
+    r"C:\Users\Librix\Desktop\labs\python_labs\data\samples\people.csv",
+    r"C:\Users\Librix\Desktop\labs\python_labs\data\samples\out\people_from_csv.xlsx",
+)

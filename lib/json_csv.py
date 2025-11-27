@@ -2,6 +2,7 @@ from pathlib import Path
 import json
 import csv
 
+
 def json_to_csv(json_path: str, csv_path: str) -> None:
     """
     Преобразует JSON-файл в CSV.

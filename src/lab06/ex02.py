@@ -8,15 +8,18 @@ from src.lab05.ex01 import json_to_csv, csv_to_json
 from src.lab05.ex02 import csv_to_xlsx
 from src.lab06.ex01 import check_file
 
+
 def silent_check_file(file_path: str) -> bool:
     """Проверка файла без вывода на экран"""
     return os.path.exists(file_path) and os.path.isfile(file_path)
+
 
 def run_silently(func, *args, **kwargs):
     """Запускает функцию без вывода на экран"""
     with contextlib.redirect_stdout(io.StringIO()):
         with contextlib.redirect_stderr(io.StringIO()):
             return func(*args, **kwargs)
+
 
 def main():
     parser = argparse.ArgumentParser(description="Конвертеры данных")
@@ -71,9 +74,9 @@ def main():
         print(f"Ошибка при конвертации: {str(e)}")
         sys.exit(1)
 
+
 if __name__ == "__main__":
     main()
-
 
 
 "   python3 -m src.lab06.ex02 json2csv --in data/samples/people.json --out data/samples/out/people_from_json.csv   "
