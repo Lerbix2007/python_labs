@@ -1009,5 +1009,6 @@ def test_invalid_suffix_to_json(tmp_path: Path):  # Входной файл не
         csv_to_json(str(src), str(dst))
 ```
 ![alt text](images/lab07/ex02.png)
+#### Форматирование кода black .
 ![alt text](<images/lab07/black --check ..png>)
 ![alt text](images/lab07/black.png)
