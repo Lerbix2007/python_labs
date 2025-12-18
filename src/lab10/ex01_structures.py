@@ -77,7 +77,7 @@ if __name__ == "__main__":
 
     print("=== Тестирование Stack ===")
     s = Stack()
-    print(f"путой?: {s.is_empty()}")
+    print(f"Путой?: {s.is_empty()}")
     s.push(10)
     s.push(20)
     print(f"Длина стека: {len(s)}")

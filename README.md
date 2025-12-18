@@ -1456,6 +1456,7 @@ if __name__ == "__main__":
     print(f"Dequeue: {q.dequeue()}")
     print(f"Теперь длина: {len(q)}")
 ```
+![alt text](images/lab10_Finale/ex01.png)
 ### Задание 2(связной список)
 ```python
 class Node:
@@ -1575,3 +1576,5 @@ class SinglyLinkedList:
         parts.append("None")
         return " -> ".join(parts)
 ```
+![alt text](images/lab10_Finale/ex02_Teil_1.png)
+![alt text](images/lab10_Finale/ex02_Teil_2.png)
