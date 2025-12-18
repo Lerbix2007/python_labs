@@ -1325,3 +1325,253 @@ print(g.stats())
 ```
 ![alt text](<images/lab09/part 1.png>)
 ![alt text](<images/lab09/part 2.png>)
+
+## Лаба 10
+### Теория
+## Стэк
+Стек (англ. Stack) — это структура данных, работающая по принципу LIFO (Last In, First Out), где последний добавленный элемент извлекается первым. 
+
+**Типичные операции, использованные в коде:**
+- `push`: добавление элемента (O(1))
+- `pop`: удаление верхнего элемента (O(1))
+- `peek`: просмотр верхнего элемента без удаления (O(1))
+- `len`: возвращает кол-во элементов (O(1))
+
+### Очередь
+Очередь (англ. Queue) — это структура данных, работающая по принципу FIFO (First In, First Out), где первый добавленный элемент извлекается первым.
+
+**Типичные операции:**
+- `enqueue`: добавление элемента в конец очереди (O(1))
+- `dequeue`: удаление первого элемента (O(1))
+- `peek`: просмотр первого элемента без удаления (O(1))
+- `len`: возвращает кол-во элементов (O(1))
+
+### Связный список
+Связный список (англ. Linked List) — это структура данных, состоящая из узлов, где каждый узел содержит данные и ссылку на следующий узел.
+
+**Типичные операции:**
+- `append`: добавление элемента в конец списка (O(n))
+- `prepend`: добавление элемента в начало списка (O(1))
+- `insert`: вставка элемента по индексу (O(n))
+- `remove_at`: удаление элемента по индексу (O(n))
+
+### Задание 1(Стэк и очередь)
+```python
+from collections import deque
+from typing import Optional
+
+
+class Stack:  # LIFO 0(1) for any class-method
+
+    def __init__(self):
+        # internal storage for the stack
+        self._data = []
+
+    def push(self, item) -> None:
+        """Add an element to the top of the stack."""
+        self._data.append(item)
+
+    def pop(self) -> any:
+        """
+        Remove the top element of the stack and return it.
+        If the stack is empty — raise an IndexError with a clear message.
+        """
+        if self.is_empty():
+            raise IndexError("pop from empty stack")
+        return self._data.pop()
+
+    def peek(self) -> Optional[any]:
+        """
+        Return the top element without removing it.
+        If the stack is empty — return None.
+        """
+        if self.is_empty():
+            return None
+        return self._data[-1]
+
+    def is_empty(self) -> bool:
+        """Return True if the stack is empty, otherwise False."""
+        return not self._data
+
+    def __len__(self) -> int:
+        """Return the number of elements in the stack."""
+        return len(self._data)
+
+
+class Queue:  # O(1) data structure --> basic principle FIFO
+    def __init__(self):
+        self._data = deque()
+
+    def enqueue(self, item) -> None:
+        """Add an element to the end of the queue."""
+        self._data.append(item)
+
+    def dequeue(self) -> any:
+        """
+        Remove and return the first element of the queue.
+        If the queue is empty — raise IndexError with a clear message.
+        """
+        if self.is_empty():
+            raise IndexError('dequeue from empty queue')
+        return self._data.popleft()
+
+    def peek(self) -> Optional[any]:
+        """
+        Return the first element without removing it.
+        If the queue is empty — return None.
+        """
+        if self.is_empty():
+            return None
+        return self._data[0]
+
+    def is_empty(self) -> bool:
+        """Return True if the queue is empty, otherwise False."""
+        return not self._data
+
+    def __len__(self):
+        """Return the number of elements in the queue."""
+        return len(self._data)
+
+if __name__ == "__main__":
+
+    print("=== Тестирование Stack ===")
+    s = Stack()
+    print(f"путой?: {s.is_empty()}")
+    s.push(10)
+    s.push(20)
+    print(f"Длина стека: {len(s)}")
+    print(f"Верхний элемент: {s.peek()}")
+    s.push(14)
+    print("добавляем еще 1 элемент")
+    print(f"Длина нового стека: {len(s)}")
+    print(f"Pop: {s.pop()}")
+    print(f"stack-1 элемент, теперь: {len(s)}")
+
+    print("\n=== Тестирование Queue ===")
+    q = Queue()
+    q.enqueue("первый")
+    q.enqueue("второй")
+    print(f"Длина очереди: {len(q)}")
+    print(f"Первый элемент: {q.peek()}")
+    print(f"Dequeue: {q.dequeue()}")
+    print(f"Теперь длина: {len(q)}")
+```
+### Задание 2(связной список)
+```python
+class Node:
+    def __init__(self, value, next=None):
+        self.value = value
+        self.next = next
+
+
+class SinglyLinkedList:
+    def __init__(self):
+        self.head = None
+        self._size = 0
+
+    def append(self, value):
+        """Add an element to the end of the list."""
+        new_node = Node(value)
+
+        if self.head is None:
+            self.head = new_node
+            self._size += 1
+            return
+
+        current = self.head # (0(n))
+        while current.next is not None:
+            current = current.next
+
+        current.next = new_node
+        self._size += 1
+
+    def prepend(self, value):
+        """Add an element to the beginning of the list (O(1))."""
+        new_node = Node(value, next=self.head)
+        self.head = new_node
+        self._size += 1
+
+    def insert(self, idx, value):
+        """Insert an element at index idx."""
+        if idx < 0 or idx > self._size:
+            raise IndexError("index out of range")
+
+        if idx == 0:
+            self.prepend(value)
+            return
+
+        new_node = Node(value)
+
+        current = self.head
+        for _ in range(idx - 1):
+            current = current.next
+
+        new_node.next = current.next
+        current.next = new_node
+        self._size += 1
+
+    def remove_at(self, idx):
+        """Remove node at index idx."""
+        if idx < 0 or idx >= self._size:
+            raise IndexError("index out of range")
+
+        if idx == 0:
+            self.head = self.head.next
+            self._size -= 1
+            return
+
+        current = self.head
+        for _ in range(idx - 1):
+            current = current.next
+
+        current.next = current.next.next
+        self._size -= 1
+
+    def get(self, idx):
+        """Get value at index idx."""
+        if idx < 0 or idx >= self._size:
+            raise IndexError("index out of range")
+
+        current = self.head
+        for _ in range(idx):
+            current = current.next
+        return current.value
+
+    def search(self, value):
+        """Search for value and return its index, or -1 if not found."""
+        current = self.head
+        index = 0
+        while current is not None:
+            if current.value == value:
+                return index
+            current = current.next
+            index += 1
+        return -1
+
+    def clear(self):
+        """Clear the entire list."""
+        self.head = None
+        self._size = 0
+
+    def __iter__(self):
+        current = self.head
+        while current is not None:
+            yield current.value
+            current = current.next
+
+    def __len__(self):
+        return self._size
+
+    def __repr__(self):
+        values = list(self)
+        return f"SinglyLinkedList({values})"
+
+    def plotter(self):
+        parts = []
+        current = self.head
+        while current is not None:
+            parts.append(f"[{current.value}]")
+            current = current.next
+        parts.append("None")
+        return " -> ".join(parts)
+```
